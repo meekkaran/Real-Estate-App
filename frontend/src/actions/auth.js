@@ -6,59 +6,63 @@ import {
     LOGIN_SUCCESS,
     LOGIN_FAIL,
     LOGOUT
-} from './types'
+} from './types';
 
 export const login = (email, password) => async dispatch => {
     const config = {
-        headers:{
+        headers: {
             'Content-Type': 'application/json'
         }
-    }
-    const body = JSON.stringify({email,password});
+    };
+
+    const body = JSON.stringify({ email, password });
 
     try {
-        const res= await axios.post('http://localhost:8000/api/token/', body, config);
+        const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/token/`, body, config);
 
         dispatch({
-            type:LOGIN_SUCCESS,
+            type: LOGIN_SUCCESS,
             payload: res.data
         });
+
         dispatch(setAlert('Authenticated successfully', 'success'));
-    } catch (error) {
+    } catch (err) {
         dispatch({
-            type:LOGIN_FAIL
+            type: LOGIN_FAIL
         });
-        dispatch(setAlert('Error Authenticating', 'error'));
-        
-    }
-}
 
-export const signup = ({ name, email, password, password2}) => async dspatch => {
+        dispatch(setAlert('Error Authenticating', 'error'));
+    }
+};
+
+export const signup = ({ name, email, password, password2 }) => async dispatch => {
     const config = {
-        headers:{
+        headers: {
             'Content-Type': 'application/json'
         }
     }
-    const body = JSON.stringify({name, email, password, password2});
+
+    const body = JSON.stringify({ name, email, password, password2 }); 
 
     try {
-        const res= await axios.post('http://localhost:8000/api/accounts/signup', body, config);
+        const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/accounts/signup`, body, config);
 
         dispatch({
-            type:SIGNUP_SUCCESS,
+            type: SIGNUP_SUCCESS,
             payload: res.data
         });
-        dispatch(login(email,password));
-    } catch (error) {
+
+        dispatch(login(email, password));
+    } catch (err) {
         dispatch({
-            type:SIGNUP_FAIL
+            type: SIGNUP_FAIL
         });
+
         dispatch(setAlert('Error Authenticating', 'error'));
-        
     }
 };
 
 export const logout = () => dispatch => {
-    dispatch(setAlert('logout successful', 'success'));
-    dispatch({type:LOGOUT});
+    dispatch(setAlert('logout successful.', 'success'));
+    dispatch({ type: LOGOUT });
 }

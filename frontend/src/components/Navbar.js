@@ -1,19 +1,19 @@
 import React, { Fragment } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { connect } from "react-redux";
-import { logout } from "../actions/auth";
+import { connect } from 'react-redux';
+import { logout } from '../actions/auth';
 import Alert from './Alert';
 import PropTypes from 'prop-types';
 
-const  navbar = ({auth: {isAuthenticated, loading}, logout }) => {
+const navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
     const authLinks = (
         <a className='navbar__top__auth__link' onClick={logout} href='#!'>Logout</a>
     );
-        
+
     const guestLinks = (
         <Fragment>
             <Link className='navbar__top__auth__link' to='/login'>Login</Link>
-            <Link className='navbar__top__auth__link' to='/login'>Sign Up</Link>
+            <Link className='navbar__top__auth__link' to='/signup'>Sign Up</Link>
         </Fragment>
     );
 
@@ -25,7 +25,7 @@ const  navbar = ({auth: {isAuthenticated, loading}, logout }) => {
                         <Link className='navbar__top__logo__link' to='/'>Realest Estate</Link>
                     </div>
                     <div className='navbar__top__auth'>
-                        { !loading && (<Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>)}
+                        { !loading && (<Fragment>{ isAuthenticated ? authLinks : guestLinks }</Fragment>) }
                     </div>
                 </div>
                 <div className='navbar__bottom'>
@@ -43,18 +43,18 @@ const  navbar = ({auth: {isAuthenticated, loading}, logout }) => {
                     </li>
                 </div>
             </nav>
-            <Alert/>
+            <Alert />
         </Fragment>
-    )
+    );
 };
 
-navbar.PropTypes = {
-    logout:PropTypes.func.isRequired,
+navbar.propTypes = {
+    logout: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired
 }
 
-const mapStateToProps = state =>({
+const mapStateToProps = state => ({
     auth: state.auth
 });
 
-export default connect(mapStateToProps, {logout })(navbar);
+export default connect(mapStateToProps, { logout })(navbar);
