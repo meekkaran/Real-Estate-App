@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { Helmet } from "react-helmet";
 import { connect } from "react-redux";
 import PropTypes from 'prop-types';
@@ -22,7 +22,7 @@ const  Login = ({ login, isAuthenticated }) => {
     };
 
     if (isAuthenticated) 
-        return <Redirect to='/' />
+        return <Navigate to='/' />
 
     return (
         <div className='auth'>
@@ -36,10 +36,10 @@ const  Login = ({ login, isAuthenticated }) => {
             <h1 className='auth__title'>Sign In</h1>
             <p className='auth__lead'>Sign into your Account</p>
             <form className='auth_form' onSubmit={e => onSubmit(e)}>
-                <div className='auth__fotm__group'>
+                <div className='auth__form__group'>
                     <input className='auth__form__input' type='email' placeholder='Email' name='email' value={email} onChange={e => onChange(e)} required />
                 </div>
-                <div className='auth__fotm__group'>
+                <div className='auth__form__group'>
                     <input 
                         className='auth__form__input'
                         type='password'
@@ -59,7 +59,7 @@ const  Login = ({ login, isAuthenticated }) => {
     ); 
 };
 
-Login.PropTypes ={
+Login.propTypes ={
     login:PropTypes.func.isRequired,
     isAuthenticated: PropTypes.bool
 };
@@ -70,4 +70,4 @@ const mapStateToProps = state => ({
 
 
 
-export default connect(mapStateToProps, {})(Login);
+export default connect(mapStateToProps, { login })(Login);
