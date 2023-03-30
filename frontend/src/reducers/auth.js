@@ -12,8 +12,8 @@ const initialState = {
     loading: false
 };
 
-export default function(state= initialState, action){
-    const ( type, payload) = action;
+export default function(state = initialState, action){
+    const {type, payload} = action;
     
     switch (type) {
         case LOGIN_SUCCESS:
@@ -36,10 +36,10 @@ export default function(state= initialState, action){
         case LOGIN_FAIL:
            
         case LOGOUT:
-            localStorage.removeItem('token'):
+            localStorage.removeItem('token');
             return {
                 ...state,
-                token = null,
+                token: null,
                 isAuthenticated: false,
                 loading:false,
             }
