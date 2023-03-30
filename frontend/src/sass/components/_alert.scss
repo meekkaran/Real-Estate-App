@@ -6,12 +6,13 @@
     height: 4rem;
     padding: 1rem 2rem;
     margin-bottom: 1rem;
+
+    &--success{
+        background-color: #28a745;
+    }
+    
+    &--error{
+        background-color: #dc3545;
+    }
 }
 
-&--success{
-    background-color: #28a745;
-}
-
-&--error{
-    background-color: #dc3545;
-}
