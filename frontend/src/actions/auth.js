@@ -14,10 +14,10 @@ export const login = (email, password) => async dispatch => {
             'Content-Type': 'application/json'
         }
     }
-    const body = JSON.stringify({email,password}):
+    const body = JSON.stringify({email,password});
 
     try {
-        const res= await axios.post('http://localhost:8000/api/token/', body, config):
+        const res= await axios.post('http://localhost:8000/api/token/', body, config);
 
         dispatch({
             type:LOGIN_SUCCESS,
@@ -39,10 +39,10 @@ export const signup = ({ name, email, password, password2}) => async dspatch => 
             'Content-Type': 'application/json'
         }
     }
-    const body = JSON.stringify({name, email, password, password2}):
+    const body = JSON.stringify({name, email, password, password2});
 
     try {
-        const res= await axios.post('http://localhost:8000/api/accounts/signup', body, config):
+        const res= await axios.post('http://localhost:8000/api/accounts/signup', body, config);
 
         dispatch({
             type:SIGNUP_SUCCESS,
@@ -60,5 +60,5 @@ export const signup = ({ name, email, password, password2}) => async dspatch => 
 
 export const logout = () => dispatch => {
     dispatch(setAlert('logout successful', 'success'));
-    dispatch(type:LOGOUT);
+    dispatch({type:LOGOUT});
 }
