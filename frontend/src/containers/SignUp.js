@@ -74,7 +74,7 @@ const  SignUp = ({ setAlert, signup, isAuthenticated }) => {
                 <button className='auth__form__button'>Register</button>
             </form>
             <p className='auth__authtext'>
-                Already have an account? <Link className='auth__authtext__link' to='/signup'>Sign In</Link>
+                Already have an account? <Link className='auth__authtext__link' to='/login'>Sign In</Link>
             </p>
         </div>
     );
