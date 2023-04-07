@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import Loader from 'react-loader-spinner';
+import * as Loader from 'react-loader-spinner';
 import PropTypes from 'prop-types';
 
 const  ListingForm = (props) => {
-    const [formData, setFormData] = useState[{
+    const [formData, setFormData] = useState({
         sale_type: 'For sale',
         price:'50+',
         bedrooms:'0+',
@@ -15,7 +15,7 @@ const  ListingForm = (props) => {
         has_photos:'1+',
         open_house:'false',
         keywords:''
-    }];
+    });
 
     const{ sale_type, price,bedrooms,home_type,bathrooms,sqft,days_listed, has_photos, open_house, keywords } = formData;
 
@@ -55,8 +55,7 @@ const  ListingForm = (props) => {
                             <option>For Rent</option>
                         </select>
                     </div>
-                </div>
-                <div className='col-1-of-6'>
+
                     <div className='listingform__section'>
                         <label className='listingform__label' htmlFor='sqft'>Sqft</label>
                         <select className='listingform__select' name='sqft'onChange={e => onChange(e)} value={sqft}>
@@ -67,9 +66,11 @@ const  ListingForm = (props) => {
                             <option>Any</option>
                         </select>
                     </div>
+
                 </div>
+    
                 <div className='col-1-of-6'>
-                     <div className='listingform__section'>
+                    <div className='listingform__section'>
                         <label className='listingform__label' htmlFor='price'>Minimum price</label>
                         <select className='listingform__select' name='price'onChange={e => onChange(e)} value={price}>
                             <option>$0+</option>
@@ -83,10 +84,95 @@ const  ListingForm = (props) => {
                             <option>Any</option>
                         </select>
                     </div>
+                    <div className='listingform__section'>
+                        <label className='listingform__label' htmlFor='days_listed'>Days Listed</label>
+                        <select className='listingform__select' name='days_listed'onChange={e => onChange(e)} value={days_listed}>
+                            <option>1 or less</option>
+                            <option>2 or less</option>
+                            <option>5 or less</option>
+                            <option>10 or less</option>
+                            <option>20 or less</option>
+                            <option>Any</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div className='col-1-of-6'>
+                    <div className='listingform__section'>
+                        <label className='listingform__label' htmlFor='bedrooms'>Bedrooms</label>
+                        <select className='listingform__select' name='bedrooms'onChange={e => onChange(e)} value={bedrooms}>
+                            <option>0+</option>
+                            <option>1+</option>
+                            <option>2+</option>
+                            <option>3+</option>
+                            <option>4+</option>
+                            <option>5+</option>
+                        </select>
+                    </div>
+                    <div className='listingform__section'>
+                        <label className='listingform__label' htmlFor='has_photos'>Has Photos</label>
+                        <select className='listingform__select' name='has_photos'onChange={e => onChange(e)} value={has_photos}>
+                            <option>1+</option>
+                            <option>3+</option>
+                            <option>5+</option>
+                            <option>10+</option>
+                            <option>15+</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div className='col-1-of-6'>
+                    <div className='listingform__section'>
+                        <label className='listingform__label' htmlFor='home_type'>Home Type</label>
+                        <select className='listingform__select' name='home_type'onChange={e => onChange(e)} value={home_type}>
+                            <option>House</option>
+                            <option>Condo</option>
+                            <option>TownHouse</option>
+                        </select>
+                    </div>
+                    <div className='listingform__section'>
+                        <label className='listingform__label' htmlFor='keywords'>Keywords</label>
+                        <input className='listingform__input' name="keywords" type='text' onChange={e => onChange(e)} value={keywords} />
+                    </div>
+                </div>
+
+                <div className='col-1-of-6'>
+                    <div className='listingform__section'>
+                        <label className='listingform__label' htmlFor='bathrooms'>Baths</label>
+                        <select className='listingform__select' name='bathrooms'onChange={e => onChange(e)} value={bathrooms}>
+                            <option>0+</option>
+                            <option>1+</option>
+                            <option>2+</option>
+                            <option>3+</option>
+                            <option>4+</option>
+                        </select>
+                    </div>
+                    <div className='listingform__altsection'>
+                        <label className='listingform__label' htmlFor='open_house'>Open Houses</label>
+                        <input className='listingform__checkbox' name="open_house" type='checkbox' onChange={e => onChange(e)} value={open_house} />
+                    </div>
+                </div>
+
+                <div className='col-1-of-6'>
+                    {loading ?
+                        <div className='listingform__loader'>
+                            <Loader 
+                                type="Oval"
+                                color="#424242"
+                                weight={50}
+                                width={50}
+                            />
+                        </div> : 
+                        <button className='listingform__button listingform__button--primary'>Save</button>
+                    }
                 </div>
             </div>
         </form>
     ); 
-}
+};
+
+ListingForm.propTypes = {
+    setListings: PropTypes.func.isRequired
+};
 
 export default ListingForm
