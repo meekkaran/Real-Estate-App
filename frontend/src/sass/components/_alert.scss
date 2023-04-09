@@ -1,5 +1,5 @@
-.alert{
-    width:100%;
+.alert {
+    width: 100%;
     font-size: 1.6rem;
     color: $color-white;
     margin-top: 1rem;
@@ -7,12 +7,11 @@
     padding: 1rem 2rem;
     margin-bottom: 1rem;
 
-    &--success{
+    &--success {
         background-color: #28a745;
     }
-    
-    &--error{
+
+    &--error {
         background-color: #dc3545;
     }
 }
-
