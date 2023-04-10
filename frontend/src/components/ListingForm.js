@@ -4,18 +4,32 @@ import * as Loader from 'react-loader-spinner';
 import PropTypes from 'prop-types';
 
 const ListingForm = (props) => {
+    
+    // const [formData, setFormData] = useState({
+    //     sale_type: 'For Sale',
+    //     price: '$0+',
+    //     bedrooms: '0+',
+    //     home_type: 'House',
+    //     bathrooms: '0+',
+    //     sqft: '1000+',
+    //     days_listed: '1 or less',
+    //     has_photos: '1+',
+    //     open_house: 'false',
+    //     keywords: ''
+    // });
+
     const [formData, setFormData] = useState({
-        sale_type: 'For Sale',
-        price: '$0+',
-        bedrooms: '0+',
-        home_type: 'House',
-        bathrooms: '0+',
-        sqft: '1000+',
-        days_listed: '1 or less',
-        has_photos: '1+',
-        open_house: 'false',
-        keywords: ''
-    });
+        sale_type: "For Sale",
+        price: "$0+",
+        bedrooms: "0+",
+        home_type: "House",
+        bathrooms: "0+",
+        sqft: "1000+",
+        days_listed: "1 or less",
+        has_photos: "1+",
+        open_house: "0",
+        keywords: "",
+      });  
 
     const { sale_type, price, bedrooms, home_type, bathrooms, sqft, days_listed, has_photos, open_house, keywords } = formData;
 
